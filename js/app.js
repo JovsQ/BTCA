@@ -21,4 +21,6 @@ app.config(function($routeProvider, $locationProvider, $compileProvider){
     	templateUrl: 'views/login.html',
     	controller: 'LoginController'
     })
+
+    .otherwise({redirectTo: '/login'});
 });
