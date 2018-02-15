@@ -12,6 +12,11 @@ app.config(function($routeProvider, $locationProvider, $compileProvider){
     	controller: 'LoginController'
     })
 
+    .when('/main', {
+    	templateUrl: 'views/main.html',
+    	controller: 'MainController'
+    })
+
     .when('/', {
     	templateUrl: 'views/login.html',
     	controller: 'LoginController'

@@ -6,7 +6,7 @@ app.controller('LoginController', ['$location', '$scope', 'authService',
 		if (typeof email != 'undefined' && typeof password != 'undefined') {
 			authService.loginByEmail(email, password)
 			.then(function(result){
-				console.log(result, firebase.auth().currentUser);
+				$location.path('/main');
 			})
 			.catch(function(error){
 				console.log(error);
