@@ -1,4 +1,6 @@
-app.controller('MainController', ['$scope', 'databaseService', function($scope, databaseService){
+app.controller('MainController', ['$scope', '$uibModal', 'databaseService', 
+	function($scope, $uibModal, databaseService){
+
 	console.log('Main controller');
 	$scope.allVerifications;
 	var verified = 'Verified';
@@ -40,4 +42,24 @@ app.controller('MainController', ['$scope', 'databaseService', function($scope, 
 			console.log(error);
 		});
 	};
+
+	$scope.viewImage = function(front, back){
+	    var modalInstance = $uibModal.open({
+	      animation: true,
+	      component: 'viewImageComponent',
+	      resolve: {
+	          front: function(){
+	            return front;
+	          },
+	          back: function(){
+	          	return back;
+	          }
+	      }
+	    });
+
+	    modalInstance.result.then(function () {
+	      $scope.getAllTransactions();
+	    }, function () {
+	    });
+	  };
 }]);

@@ -1,0 +1,17 @@
+<div class="modal-content">
+  <div class="modal-header">
+    <button type="button" class="close" aria-label="Close" ng-click="$ctrl.cancel()"><span aria-hidden="true">&times;</span></button>
+    <h4 class="modal-title">Government ID</h4>
+  </div>
+  <div class="modal-body align-center">
+    <div class="form-group">
+      <img ng-src="{{$ctrl.front}}" class="image-preview-lg">
+    </div>
+    <div class="form-group">
+      <img ng-src="{{$ctrl.back}}" class="image-preview-lg">
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-primary" ng-click="$ctrl.ok()">Ok</button>
+  </div>
+</div>

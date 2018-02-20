@@ -72,7 +72,7 @@
                                 <tr ng-repeat="(key, value) in allVerifications">
                                     <td>{{value.id}}</td>
                                     <td>{{value.verification_applied_date}}</td>
-                                    <td><button type="button" class="btn btn-success" ng-click="openDeleteModal($index, exam.key)">View</button></td>
+                                    <td><button type="button" class="btn btn-success" ng-click="viewImage(value.frontImageUrl, value.backImageUrl)">View</button></td>
                                     <td><span ng-class="verified(value.id_verification_status) ? 'text-success' : 'text-warning'">{{value.id_verification_status}}</span></td>
                                     <td><button type="button" class="btn btn-danger" ng-click="verifiyId(key, value.id)" ng-hide="verified(value.id_verification_status)">Verify</button></td>
                                 </tr>
