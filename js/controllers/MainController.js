@@ -1,6 +1,8 @@
 app.controller('MainController', ['$scope', 'databaseService', function($scope, databaseService){
 	console.log('Main controller');
 	$scope.allVerifications;
+	var verified = 'Verified';
+	var pending = 'Pending Approval';
 
 	$scope.init = function(){
 		//get all verifications
@@ -17,7 +19,16 @@ app.controller('MainController', ['$scope', 'databaseService', function($scope, 
 		console.log('verification', verification);
 	};
 
-	$scope.verifiyId = function(verification){
-		console.log('verification', verification);
+	$scope.verifiyId = function(applicationKey, userKey){
+		console.log('applicationKey', applicationKey);
+		console.log('userKey', userKey);
+
+		databaseService.verifyId(applicationKey, userKey, verified)
+		.then(function(result){
+			console.log(result);
+		})
+		.catch(function(error){
+			console.log(error);
+		});
 	};
 }]);
