@@ -69,12 +69,12 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr ng-repeat="v in allVerifications">
-                                    <td>{{v.id}}</td>
-                                    <td>{{v.verification_applied_date}}</td>
+                                <tr ng-repeat="(key, value) in allVerifications">
+                                    <td>{{value.id}}</td>
+                                    <td>{{value.verification_applied_date}}</td>
                                     <td><button type="button" class="btn btn-success" ng-click="openDeleteModal($index, exam.key)">View</button></td>
-                                    <td><p class="text-warning">{{v.id_verification_status}}</p></td>
-                                    <td><button type="button" class="btn btn-danger" ng-click="openDeleteModal($index, exam.key)">Verify</button></td>
+                                    <td><p class="text-warning"> {{value.id_verification_status}}</p></td>
+                                    <td><button type="button" class="btn btn-danger" ng-click="verifiyId(key)">Verify</button></td>
                                 </tr>
                                 <tr ng-if="isEmpty">
                                     <td colspan="3" class="center">No exams found.</td>

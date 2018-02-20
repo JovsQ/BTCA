@@ -9,7 +9,13 @@ app.service('databaseService', ['$q', function($q){
 		var verifications = [];
 
 		self.verificationsRef.orderByKey().once('value', function(snapshot){
-			deferred.resolve(snapshot.val());
+			deferred.resolve(snapshot);
+			snapshot.forEach(function(childSnapshot){
+				console.log('key', childSnapshot.key);
+				verifications.push(childSnapshot);
+			});
+
+			deferred.resolve(verifications);
 		});
 
 		return deferred.promise;

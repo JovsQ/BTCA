@@ -6,11 +6,18 @@ app.controller('MainController', ['$scope', 'databaseService', function($scope, 
 		//get all verifications
 		databaseService.getAllVerifications()
 		.then(function(result){
-			console.log('result', result);
-			$scope.allVerifications = result;
+			$scope.allVerifications = result.val();
 		})
 		.catch(function(error){
 			console.log('error', error.message);
 		});
+	};
+
+	$scope.preview = function(verification){
+		console.log('verification', verification);
+	};
+
+	$scope.verifiyId = function(verification){
+		console.log('verification', verification);
 	};
 }]);
