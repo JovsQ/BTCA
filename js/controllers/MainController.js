@@ -6,6 +6,10 @@ app.controller('MainController', ['$scope', 'databaseService', function($scope, 
 
 	$scope.init = function(){
 		//get all verifications
+		getAllVerifications();
+	};
+
+	var getAllVerifications = function(){
 		databaseService.getAllVerifications()
 		.then(function(result){
 			$scope.allVerifications = result.val();
@@ -19,6 +23,10 @@ app.controller('MainController', ['$scope', 'databaseService', function($scope, 
 		console.log('verification', verification);
 	};
 
+	$scope.verified = function(status){
+		return status == verified;
+	};
+
 	$scope.verifiyId = function(applicationKey, userKey){
 		console.log('applicationKey', applicationKey);
 		console.log('userKey', userKey);
@@ -26,6 +34,7 @@ app.controller('MainController', ['$scope', 'databaseService', function($scope, 
 		databaseService.verifyId(applicationKey, userKey, verified)
 		.then(function(result){
 			console.log(result);
+			getAllVerifications();
 		})
 		.catch(function(error){
 			console.log(error);
