@@ -61,7 +61,7 @@
                         <table class="table table-striped table-bordered" >
                             <thead>
                                 <tr>
-                                    <th class="col-md-1">ID</th>
+                                    <th class="col-md-1">Name</th>
                                     <th class="col-md-1">Verification Applied Date</th>
                                     <th class="col-md-1">ID Image</th>
                                     <th class="col-md-1">Status</th>
@@ -70,7 +70,7 @@
                             </thead>
                             <tbody>
                                 <tr ng-repeat="(key, value) in allVerifications">
-                                    <td>{{value.id}}</td>
+                                    <td>{{value.user.name}}</td>
                                     <td>{{value.verification_applied_date}}</td>
                                     <td><button type="button" class="btn btn-success" ng-click="viewImage(value.frontImageUrl, value.backImageUrl)">View</button></td>
                                     <td><span ng-class="verified(value.id_verification_status) ? 'text-success' : 'text-warning'">{{value.id_verification_status}}</span></td>

@@ -14,7 +14,8 @@ app.controller('MainController', ['$scope', '$uibModal', 'databaseService',
 	var getAllVerifications = function(){
 		databaseService.getAllVerifications()
 		.then(function(result){
-			$scope.allVerifications = result.val();
+			console.log('get all verifications', result);
+			$scope.allVerifications = result;
 		})
 		.catch(function(error){
 			console.log('error', error.message);

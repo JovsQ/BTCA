@@ -9,13 +9,23 @@ app.service('databaseService', ['$q', function($q){
 		var verifications = [];
 
 		self.verificationsRef.orderByKey().once('value', function(snapshot){
-			deferred.resolve(snapshot);
+			var promises = [];
 			snapshot.forEach(function(childSnapshot){
-				console.log('key', childSnapshot.key);
-				verifications.push(childSnapshot);
+				var verification = {};
+				verification = childSnapshot.val();
+				verification.key = childSnapshot.key;
+				self.getUserByKey(verification.id)
+				.then(function(result){
+					verification.user = result;
+					verifications.push(verification);
+					if (verifications.length == snapshot.numChildren()) {
+						deferred.resolve(verifications);
+					}
+				})
+				.catch(function(error){
+					deferred.reject(error.message);
+				});
 			});
-
-			deferred.resolve(verifications);
 		});
 
 		return deferred.promise;
